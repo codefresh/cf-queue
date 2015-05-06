@@ -1,6 +1,6 @@
 {
   "name": "cf-queue",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Queue wrapper for nats.io",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/codefresh/queue",
   "dependencies": {
+    "cf-errors": "0.0.1",
     "mocha": "^2.2.4",
     "nats": "^0.2.9",
     "q": "^1.3.0"
