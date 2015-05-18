@@ -1,6 +1,6 @@
 {
   "name": "cf-queue",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Queue wrapper for nats.io",
   "main": "index.js",
   "scripts": {
