@@ -1,10 +1,12 @@
-var Queue   = require('cf-queue');
+var Queue   = require('../../index');
 
 var queueName = process.env.QUEUE_NAME || 'qname';
 var workerName = process.env.WORKER_NAME || 'worker';
 var options = {
+    workers: 10,
     servers: [
-        'nats://gnats:4222'
+        'nats://192.168.59.103:4222',
+        'nats://192.168.59.103:4223'
     ]
 };
 
