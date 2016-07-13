@@ -22,7 +22,7 @@
   "dependencies": {
     "cf-errors": "git+https://github.com/codefresh-io/cf-errors.git#7e4d60cc0794482d5af4e66dcb753d456379f525",
     "mocha": "^2.2.4",
-    "nats": "^0.2.9",
+    "nats": "0.6.4",
     "q": "^1.3.0"
   }
 }
