@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/codefresh/queue",
   "dependencies": {
-    "cf-errors": "0.1.1",
+    "cf-errors": "0.1.2",
     "cf-monitor": "git+https://github.com/codefresh-io/cf-monitor.git#0c99b3d53027550e1d746abd4858341155085304",
     "mocha": "^2.2.4",
     "nats": "0.6.4",
