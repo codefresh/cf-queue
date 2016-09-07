@@ -9,12 +9,16 @@ var queue = new Queue("myChannel", {
 
 
 
-queue.process(function(request, callback){
-    request.progress("progress");
+var unsubscribe = queue.process(function(request, callback){
+    //request.progress("progress");
     setTimeout(() => {
-        console.log(`got request: ${JSON.stringify(request)}`);
+        //console.log(`got request: ${JSON.stringify(request)}`);
         callback(null, "ok");
         //callback(null, "ok");
         request.progress("progress");
-    }, 4000);
+    }, 1000);
 });
+
+setTimeout(() => {
+    unsubscribe();
+}, 2000);

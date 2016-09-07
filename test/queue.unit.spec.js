@@ -376,7 +376,7 @@ describe('request/process tests', function () {
                         done(err);
                     });
                     d.run(() => {
-                        expect(job.request).to.deep.equal({ field: 'value' });
+                        expect(job.request).to.deep.equal({field: 'value'});
                         callback();
                         expect(publishSpy).to.have.been.calledOnce; // jshint ignore:line
                         expect(unsubscribeSpy).to.not.have.been.called; // jshint ignore:line
@@ -422,7 +422,7 @@ describe('request/process tests', function () {
                         done(err);
                     });
                     d.run(() => {
-                        expect(job.request).to.deep.equal({ field: 'value' });
+                        expect(job.request).to.deep.equal({field: 'value'});
                         callback();
                         expect(publishSpy).to.have.been.calledOnce; // jshint ignore:line
                         expect(unsubscribeSpy).to.not.have.been.called; // jshint ignore:line
@@ -470,7 +470,7 @@ describe('request/process tests', function () {
                         done(err);
                     });
                     d.run(() => {
-                        expect(job.request).to.deep.equal({ field: 'value' });
+                        expect(job.request).to.deep.equal({field: 'value'});
                         expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                         expect(subscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                         done();
@@ -514,7 +514,7 @@ describe('request/process tests', function () {
                         done(err);
                     });
                     d.run(() => {
-                        expect(job.request).to.deep.equal({ field: 'value' });
+                        expect(job.request).to.deep.equal({field: 'value'});
                         expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                         expect(subscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                         callback();
@@ -523,6 +523,151 @@ describe('request/process tests', function () {
                     });
                 });
                 queue.process(handler);
+            });
+
+            it('should call connection unsubscribe in case of unsubscribing', (done) => {
+                var subscribed     = false;
+                var unsubscribeSpy = sinon.spy();
+                var publishSpy     = sinon.spy();
+                var subscribeSpy   = sinon.spy((name, options, callback) => {
+                    process.nextTick(() => {
+                        if (!subscribed) {
+                            subscribed = true;
+                            callback(Buffer(JSON.stringify({
+                                data: {
+                                    field: "value"
+                                }
+                            }), 'utf8').toString('base64'));
+                        }
+                    });
+                    return 1;
+                });
+                var Queue          = proxyquire('../lib/queue', {
+                    'nats': {
+                        connect: () => {
+                            return {
+                                unsubscribe: unsubscribeSpy,
+                                subscribe: subscribeSpy,
+                                publish: publishSpy
+                            };
+                        }
+                    }
+                });
+                var queue          = new Queue("myChannel", {workers: 2});
+                var handler        = sinon.spy((job, callback) => {
+                    var d = domain.create();
+                    d.on('error', (err) => {
+                        done(err);
+                    });
+                    d.run(() => {
+                        expect(job.request).to.deep.equal({field: 'value'});
+                        callback();
+                        expect(publishSpy).to.have.been.calledOnce; // jshint ignore:line
+                        expect(unsubscribeSpy).to.not.have.been.called; // jshint ignore:line
+                        callback();
+                        unsubscribe();
+                        expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
+                        done();
+                    });
+                });
+                var unsubscribe = queue.process(handler); // jshint ignore:line
+            });
+
+            it('should not succeed to subscribe again in case unsubscribe was called and after that a handler of a previous request finishes its execution and tries to re-subscribe', (done) => {
+                var subscribed     = false;
+                var unsubscribeSpy = sinon.spy();
+                var publishSpy     = sinon.spy();
+                var subscribeSpy   = sinon.spy((name, options, callback) => {
+                    setTimeout(() => {
+                        if (!subscribed) {
+                            subscribed = true;
+                            callback(Buffer(JSON.stringify({
+                                data: {
+                                    field: "value"
+                                }
+                            }), 'utf8').toString('base64'));
+                        }
+                    }, 500);
+                    return 1;
+                });
+                var Queue          = proxyquire('../lib/queue', {
+                    'nats': {
+                        connect: () => {
+                            return {
+                                unsubscribe: unsubscribeSpy,
+                                subscribe: subscribeSpy,
+                                publish: publishSpy
+                            };
+                        }
+                    }
+                });
+                var queue          = new Queue("myChannel", {workers: 2});
+                var handler        = sinon.spy((job, callback) => {
+                    var d = domain.create();
+                    d.on('error', (err) => {
+                        done(err);
+                    });
+                    d.run(() => {
+                        expect(job.request).to.deep.equal({field: 'value'});
+                        callback();
+                        expect(publishSpy).to.have.been.calledOnce; // jshint ignore:line
+                        expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
+                        expect(subscribeSpy).to.have.been.calledOnce; // jshint ignore:line
+                        callback();
+                        done();
+                    });
+                });
+                var unsubscribe = queue.process(handler);
+                unsubscribe();
+            });
+
+            it('should subscribe again in case worker reached max, completed and only after that unsubscribe was called', (done) => {
+                var subscribed     = false;
+                var unsubscribeSpy = sinon.spy();
+                var publishSpy     = sinon.spy();
+                var subscribeSpy   = sinon.spy((name, options, callback) => {
+                    setTimeout(() => {
+                        if (!subscribed) {
+                            subscribed = true;
+                            callback(Buffer(JSON.stringify({
+                                data: {
+                                    field: "value"
+                                }
+                            }), 'utf8').toString('base64'));
+                        }
+                    }, 500);
+                    return 1;
+                });
+                var Queue          = proxyquire('../lib/queue', {
+                    'nats': {
+                        connect: () => {
+                            return {
+                                unsubscribe: unsubscribeSpy,
+                                subscribe: subscribeSpy,
+                                publish: publishSpy
+                            };
+                        }
+                    }
+                });
+                var queue          = new Queue("myChannel", {workers: 1});
+                var handler        = sinon.spy((job, callback) => {
+                    var d = domain.create();
+                    d.on('error', (err) => {
+                        done(err);
+                    });
+                    d.run(() => {
+                        expect(job.request).to.deep.equal({field: 'value'});
+                        callback();
+                        expect(publishSpy).to.have.been.calledOnce; // jshint ignore:line
+                        expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
+                        expect(subscribeSpy).to.have.been.calledTwice; // jshint ignore:line
+                        unsubscribe();
+                        expect(unsubscribeSpy).to.have.been.calledTwice; // jshint ignore:line
+                        callback();
+                        done();
+                    });
+                });
+                var unsubscribe = queue.process(handler); // jshint ignore:line
             });
 
         });
@@ -571,7 +716,7 @@ describe('request/process tests', function () {
                         done(err);
                     });
                     d.run(() => {
-                        expect(job.request).to.deep.equal({ field: 'value' });
+                        expect(job.request).to.deep.equal({field: 'value'});
                         expect(subscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                         callback(new Error("handling error"));
                     });
