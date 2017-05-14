@@ -9,6 +9,65 @@ var sinonChai  = require('sinon-chai');
 chai.use(sinonChai);
 var domain = require('domain');
 
+describe('constructor', function(){
+
+    var Queue, connectSpy, readFileSyncSpy, createSecureContextSpy;
+    beforeEach(function(){
+        connectSpy = sinon.spy();
+        readFileSyncSpy = sinon.spy();
+        createSecureContextSpy = sinon.spy();
+        Queue          = proxyquire('../lib/queue', {
+            'nats': {
+                connect: connectSpy
+            },
+            'fs': {
+                readFileSync: readFileSyncSpy
+            },
+            'tls': {
+                createSecureContext: createSecureContextSpy
+            }
+        });
+    });
+
+    it('without Tls', function(){
+      var opts = {
+          servers: ['srv1:4222', 'srv2:4222']
+      };
+      var queue = new Queue('test', opts);
+      expect(queue.tls).to.be.false; //jshint ignore:line
+      expect(queue.totalWorkers).to.be.equal(50);
+      expect(queue.timeout).to.be.equal(60000);
+
+      expect(readFileSyncSpy).to.have.not.been.called; //jshint ignore:line
+      expect(createSecureContextSpy).to.have.not.been.called; //jshint ignore:line
+
+    });
+
+    it('with Tls', function(){
+        var opts = {
+            servers: ['srv1:4222', 'srv2:4222'],
+            tls: {
+                key: 'key.pem',
+                cert: 'cert.pem'
+            },
+            workers: 100,
+            timeout: 120000
+        };
+        var queue = new Queue('test', opts);
+
+        expect(queue.totalWorkers).to.be.equal(100);
+        expect(queue.timeout).to.be.equal(120000);
+
+        expect(queue.tls).to.be.not.empty; //jshint ignore:line
+
+        expect(readFileSyncSpy).to.have.been.calledTwice; //jshint ignore:line
+        expect(createSecureContextSpy).to.have.been.calledOnce; //jshint ignore:line
+
+        var natsOpts = connectSpy.firstCall.args[0];
+        expect(natsOpts).to.include.keys('tls');
+        expect(natsOpts.tls).to.include.keys('cert', 'secureContext');
+    });
+});
 
 describe('request/process tests', function () {
 
@@ -231,7 +290,7 @@ describe('request/process tests', function () {
                     .then(() => {
                         return Q.reject(new Error("should have failed"));
                     }, (err) => {
-                        expect(err.toString()).to.equal("QueueError: queue: 'myChannel' failed to parse response: '{\"status\":\"finished\",\"response\":\"response\"}' as json; caused by TypeError: must start with number, buffer, array or string");
+                        expect(err.toString()).to.contain("QueueError: queue: 'myChannel' failed to parse response: '{\"status\":\"finished\",\"response\":\"response\"}' as json; caused by TypeError:");
                         expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                     });
 
