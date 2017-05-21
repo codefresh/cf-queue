@@ -48,7 +48,8 @@ describe('constructor', function(){
             servers: ['srv1:4222', 'srv2:4222'],
             tls: {
                 key: 'key.pem',
-                cert: 'cert.pem'
+                cert: 'cert.pem',
+                ca: 'ca.pem'
             },
             workers: 100,
             timeout: 120000
@@ -60,7 +61,7 @@ describe('constructor', function(){
 
         expect(queue.tls).to.be.not.empty; //jshint ignore:line
 
-        expect(readFileSyncSpy).to.have.been.calledTwice; //jshint ignore:line
+        expect(readFileSyncSpy.callCount).to.equal(3); //jshint ignore:line
         expect(createSecureContextSpy).to.have.been.calledOnce; //jshint ignore:line
 
         var natsOpts = connectSpy.firstCall.args[0];
