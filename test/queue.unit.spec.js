@@ -35,7 +35,7 @@ describe('constructor', function(){
       };
       var queue = new Queue('test', opts);
       expect(queue.tls).to.be.false; //jshint ignore:line
-      expect(queue.totalWorkers).to.be.equal(50);
+      expect(queue.totalWorkers).to.be.equal(1);
       expect(queue.timeout).to.be.equal(60000);
 
       expect(readFileSyncSpy).to.have.not.been.called; //jshint ignore:line
