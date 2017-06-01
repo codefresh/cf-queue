@@ -17,7 +17,7 @@ describe('constructor', function(){
         readFileSyncSpy = sinon.spy();
         createSecureContextSpy = sinon.spy();
         Queue          = proxyquire('../lib/queue', {
-            'nats': {
+            '../nats': {
                 connect: connectSpy
             },
             'fs': {
@@ -89,7 +89,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -123,7 +123,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -164,7 +164,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue           = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -204,7 +204,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -236,7 +236,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -276,7 +276,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -303,7 +303,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -335,7 +335,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -372,7 +372,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -419,7 +419,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -513,7 +513,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -557,7 +557,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -603,7 +603,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -651,7 +651,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -699,7 +699,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
@@ -759,7 +759,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
