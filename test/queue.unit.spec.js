@@ -465,7 +465,7 @@ describe('request/process tests', function () {
                     return 1;
                 });
                 var Queue          = proxyquire('../lib/queue', {
-                    'nats': {
+                    '../nats': {
                         connect: () => {
                             return {
                                 unsubscribe: unsubscribeSpy,
