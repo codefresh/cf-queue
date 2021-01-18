@@ -291,7 +291,7 @@ describe('request/process tests', function () {
                     .then(() => {
                         return Q.reject(new Error("should have failed"));
                     }, (err) => {
-                        expect(err.toString()).to.contain("QueueError: queue: 'myChannel' failed to parse response: '{\"status\":\"finished\",\"response\":\"response\"}' as json; caused by TypeError:");
+                        expect(err.toString()).to.contain("QueueError: queue: 'myChannel' failed to parse response: '{\"status\":\"finished\",\"response\":\"response\"}' as json; caused by TypeError");
                         expect(unsubscribeSpy).to.have.been.calledOnce; // jshint ignore:line
                     });
 

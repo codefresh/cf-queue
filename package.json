@@ -4,7 +4,7 @@
   "description": "Queue wrapper for nats.io",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/multi-workers.js"
+    "test": "mocha test"
   },
   "repository": {
     "type": "git",
