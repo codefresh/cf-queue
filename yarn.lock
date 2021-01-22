@@ -2037,11 +2037,12 @@ natives@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.0.tgz#e9ff841418a6b2ec7a495e939984f78f163e6e31"
 
-nats@0.7.20:
-  version "0.7.20"
-  resolved "https://registry.yarnpkg.com/nats/-/nats-0.7.20.tgz#f951d815e2dddce65cd0dda5fb0124ebc0936dd9"
+nats@0.8.10:
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/nats/-/nats-0.8.10.tgz#3afb6d60e94385dc719f752ae9995495071d70a1"
+  integrity sha512-0aCDCjDbSzmesiHfMG5WEMDurip1mMOdJ2zDTztuKp0RizDcu4u82azvr7NPJvqx9NmBxF1wAlacuHZlMcCRHQ==
   dependencies:
-    nuid ">=0.6.8"
+    nuid "^0.6.14"
 
 newrelic@^5.6.3:
   version "5.13.1"
@@ -2090,9 +2091,10 @@ normalize-path@^2.0.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
-nuid@>=0.6.8:
+nuid@^0.6.14:
   version "0.6.14"
   resolved "https://registry.yarnpkg.com/nuid/-/nuid-0.6.14.tgz#a225c8b720e46c563ad8d13641368669f6c25b48"
+  integrity sha1-oiXItyDkbFY62NE2QTaGafbCW0g=
 
 number-is-nan@^1.0.0:
   version "1.0.1"
