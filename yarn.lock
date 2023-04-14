@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@codefresh-io/cf-monitor@0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@codefresh-io/cf-monitor/-/cf-monitor-0.0.25.tgz#d72cface55b59b93c8a491c5960e9a2cdac09f37"
-  integrity sha512-zwKBdBZce7xQuBE1okP6eiLo2KOOXtu7X2FJmLUFM55ut6AmurY/UGyhuA/su9rK9MDW3bj61/X+2AZHZggbRw==
+"@codefresh-io/cf-monitor@0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@codefresh-io/cf-monitor/-/cf-monitor-0.0.26.tgz#83c80eec237e4757f412fe20fe02112cf106175d"
+  integrity sha512-L/SAR6cLs0CQjADhpdEsqjZ/04TjVuGTOkDtH9Zkk1FafakyFZHHENuekkPtE5FQdh65CU3UJzLLmW/SuE+OwA==
   dependencies:
     newrelic "^9.1.0"
 
