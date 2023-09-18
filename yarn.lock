@@ -3372,11 +3372,12 @@ natives@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/natives/-/natives-1.1.0.tgz#e9ff841418a6b2ec7a495e939984f78f163e6e31"
 
-nats@0.7.20:
-  version "0.7.20"
-  resolved "https://registry.yarnpkg.com/nats/-/nats-0.7.20.tgz#f951d815e2dddce65cd0dda5fb0124ebc0936dd9"
+nats@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/nats/-/nats-2.16.0.tgz#8be2a564027a665b52b3a9b60c23bb9ea02e444a"
+  integrity sha512-VH0FiMGMjv+6+DGz5sPfpEkOQXn9rVtadJ3l1D0+HzezVks5lCl2WTgNO3Q0Ba5n43n+BOz95U5muPF3EpsEtA==
   dependencies:
-    nuid ">=0.6.8"
+    nkeys.js "1.0.5"
 
 newrelic@10.6.2:
   version "10.6.2"
@@ -3401,6 +3402,13 @@ newrelic@10.6.2:
   optionalDependencies:
     "@contrast/fn-inspect" "^3.3.0"
     "@newrelic/native-metrics" "^9.0.1"
+
+nkeys.js@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/nkeys.js/-/nkeys.js-1.0.5.tgz#3024bde671eb33be0316ff2d5abe8b8cec960158"
+  integrity sha512-u25YnRPHiGVsNzwyHnn+PT90sgAhnS8jUJ1nxmkHMFYCJ6+Ic0lv291w7uhRBpJVJ3PH2GWbYqA151lGCRrB5g==
+  dependencies:
+    tweetnacl "1.0.3"
 
 node-gyp-build@^4.6.0:
   version "4.6.1"
@@ -3434,10 +3442,6 @@ normalize-path@^2.0.1:
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.1.1.tgz#1ab28b556e198363a8c1a6f7e6fa20137fe6aed9"
   dependencies:
     remove-trailing-separator "^1.0.1"
-
-nuid@>=0.6.8:
-  version "0.6.14"
-  resolved "https://registry.yarnpkg.com/nuid/-/nuid-0.6.14.tgz#a225c8b720e46c563ad8d13641368669f6c25b48"
 
 number-is-nan@^1.0.0:
   version "1.0.1"
@@ -4297,6 +4301,11 @@ tslib@^2.3.1, tslib@^2.5.0:
 tunnel-agent@~0.4.1:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
+
+tweetnacl@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
+  integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
