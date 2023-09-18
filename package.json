@@ -22,7 +22,7 @@
   "dependencies": {
     "@codefresh-io/cf-monitor": "0.0.29",
     "cf-errors": "^0.1.15",
-    "nats": "0.7.20",
+    "nats": "^2.16.0",
     "q": "^1.3.0"
   },
   "devDependencies": {
