@@ -21,7 +21,7 @@
   "homepage": "https://github.com/codefresh/queue",
   "dependencies": {
     "@codefresh-io/cf-monitor": "0.0.29",
-    "cf-errors": "^0.1.15",
+    "cf-errors": "^0.1.17",
     "nats": "^2.16.0",
     "q": "^1.3.0"
   },

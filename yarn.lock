@@ -1403,12 +1403,12 @@ center-align@^0.1.1:
     align-text "^0.1.3"
     lazy-cache "^1.0.3"
 
-cf-errors@^0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/cf-errors/-/cf-errors-0.1.15.tgz#b55d03f1977e9677e3af7e7177ae0d901bafaf8a"
-  integrity sha512-gwhuKuBI7W/CuMpz+bxluWQRAuB3hvGbNcp46A/KcymgRnGKw2vLmIMHI2JaGpATMNdJh49ErocwVruM2UlJqw==
+cf-errors@^0.1.17:
+  version "0.1.17"
+  resolved "https://registry.yarnpkg.com/cf-errors/-/cf-errors-0.1.17.tgz#fbd0d793fa52dff2681b5d3e19a9352ce066d8cc"
+  integrity sha512-RdPIQpTdGuS4F38RzQf8P4SDUxNaZIH12zIZ7+3K4TTTbOUHQKpL+KVSRIS9xM94KpbyMDYW38+nuL3FkhnJEQ==
   dependencies:
-    lodash "4.17.20"
+    lodash "^4.17.21"
 
 chai@^3.0.0:
   version "3.5.0"
@@ -3109,11 +3109,6 @@ lodash@3.6.*:
 lodash@3.7.x:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.7.0.tgz#3678bd8ab995057c07ade836ed2ef087da811d45"
-
-lodash@4.17.20:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 lodash@4.17.21, lodash@^4.17.21:
   version "4.17.21"
