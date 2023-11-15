@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codefresh/queue.git"
+    "url": "git+https://github.com/codefresh-io/cf-queue.git"
   },
   "keywords": [
     "NATS"
@@ -16,9 +16,9 @@
   "author": "Guy Balteriski",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codefresh/queue/issues"
+    "url": "https://github.com/codefresh-io/cf-queue/issues"
   },
-  "homepage": "https://github.com/codefresh/queue",
+  "homepage": "https://github.com/codefresh-io/cf-queue",
   "dependencies": {
     "@codefresh-io/cf-monitor": "0.0.29",
     "cf-errors": "^0.1.15",
