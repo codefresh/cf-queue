@@ -1,6 +1,6 @@
 {
   "name": "@codefresh-io/cf-queue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Queue wrapper for nats.io",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/codefresh-io/cf-queue",
   "dependencies": {
-    "@codefresh-io/cf-monitor": "0.0.29",
+    "@codefresh-io/cf-monitor": "^12.0.0",
     "cf-errors": "^0.1.15",
     "nats": "^1.4.9-1",
     "q": "^1.3.0"
